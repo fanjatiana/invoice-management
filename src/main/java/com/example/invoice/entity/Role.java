@@ -2,6 +2,8 @@ package com.example.invoice.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="role")
 public class Role {
@@ -9,6 +11,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String roleName;
+
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List<User> users;
 
     public Role(String role) {
         this.roleName = role;
