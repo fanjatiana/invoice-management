@@ -9,38 +9,14 @@
 
 <header>
   <div class="container">
-    <div class="row">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><h1><img src="" class="img-thumbnail w-25"
-                                                    alt="logo"></h1></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registration">Registration</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div class="mt-5">
+      <h1 class="text-center">Login</h1>
     </div>
-
   </div>
 </header>
 <main>
-  <div class="container d-flex justify-content-center align-items-center flex-column mt-4">
-    <div class="row col-4 mt-5">
-      <h2 class="text-center">Login</h2>
-    </div>
-    <div class="row col-4">
+  <div class=" card w-25 container d-flex justify-content-center align-items-center flex-column mt-4 shadow-lg">
+    <div class=" card-body row col-4 w-100">
       <form action="#" th:action="@{/login}" th:object="${form}" method="post">
         <div class="mb-3 col-12">
           <label for="email" class="form-label">Email</label>
@@ -61,7 +37,7 @@
   </div>
 </main>
 <footer>
-  <div class="container fixed-bottom mt-3 pt-3 bg-dark text-bg-dark">
+  <div class="container fixed-bottom mt-3 pt-3 w-100">
     <div class="row">
       <div class="col-md-12 text-center">
         <p>&copy; 2023 - Made by Fanja.P</p>
