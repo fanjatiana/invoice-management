@@ -41,6 +41,10 @@ public class Client {
         this.productList = productList;
     }
 
+    public Client(String compagnyName) {
+        this.compagnyName = compagnyName;
+    }
+
     public Client() {
     }
 

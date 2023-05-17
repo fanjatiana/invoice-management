@@ -52,12 +52,16 @@ public class InvoiceService {
         return invoices;
     }
 
-  /* public Product addProductByForm(String productName, String productDescription, String priceHt, ProductCategory productCategory) {
-        double price= Double.parseDouble(priceHt);
-        Product newProduct = new Product(productName, productDescription, price, new ProductCategory(productCategory.getCategoryName()));
-        productRepository.save(newProduct);
-        return newProduct;
-    }*/
+    public Invoice addInvoiceByForm(String today,  Payment typeOfPayment, Client clientCompagnyName, Product clientProductName) {
+        LocalDate localDate = LocalDate.parse(today);
+        LocalDate localDateDeadline = localDate.plusMonths(1);
+
+        Client client = clientRepository.save(new Client(clientCompagnyName.getCompagnyName()));
+        Product product = productRepository.save(new Product(clientProductName.getProductName()));
+
+        Invoice newInvoice = invoiceRepository.save(new Invoice(localDate, localDateDeadline, new Payment(typeOfPayment.getTypeOfPayment()), client, product));
+        return newInvoice;
+    }
 
     public List<Invoice> findAllInvoicies() {
         return invoiceRepository.findAll();

@@ -28,6 +28,11 @@ public class Product {
         this.priceHT = priceHT;
         this.productCategory = productCategory;
     }
+
+    public Product(String productName) {
+        this.productName = productName;
+    }
+
     public Product() {
     }
 
