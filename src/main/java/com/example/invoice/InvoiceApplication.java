@@ -1,6 +1,7 @@
 package com.example.invoice;
 
 import com.example.invoice.service.ClientService;
+import com.example.invoice.service.InvoiceService;
 import com.example.invoice.service.ProductService;
 import com.example.invoice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class InvoiceApplication implements CommandLineRunner {
 	ClientService clientService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	InvoiceService invoiceService;
 
 
 	public static void main(String[] args) {
@@ -27,5 +30,7 @@ public class InvoiceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		userService.addUser();
+		invoiceService.addInvoice();
+
 	}
 }

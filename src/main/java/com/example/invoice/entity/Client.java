@@ -16,6 +16,8 @@ public class Client {
     @JoinColumn(name = "address_id")
     private Address address;
 
+
+
     public Client() {
     }
 
