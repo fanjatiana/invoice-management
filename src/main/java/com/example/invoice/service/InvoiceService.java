@@ -27,19 +27,27 @@ public class InvoiceService {
 
     public List<Invoice> addInvoice() {
         Client client1 = clientRepository.save(new Client("Marc", "Dupuit", "0212254689", "JoahVap", new Address("3 rue des marais", "44600", "Saint-Nazaire")));
-
+        Client client2 = clientRepository.save(new Client("Julie", "Chateau", "0212254689", "PetShop", new Address("30 rue des puits", "44000", "Nantes")));
         LocalDate today = LocalDate.now();
         LocalDate invoiceDeadline = today.plusMonths(1);
 
         Product product1 = new Product("Jambon 4 tranches", "paquet de 4 tranches de jambon de la marque fleury michon", 6.18, new ProductCategory("Alimentaire"));
-
         List<Invoice> invoices = new ArrayList<>();
-        Invoice invoice1 = new Invoice(today, invoiceDeadline, new Payment("Chèque"), client1,product1);
+        Invoice invoice1 = new Invoice(today, invoiceDeadline, new Payment("Chèque"), client1, product1);
+        invoiceRepository.save(invoice1);
+        productRepository.save(product1);
 
 
-       invoiceRepository.save(invoice1); // Enregistrer l'invoice
+        Product productClient2_1 = new Product("manteau", "Manteau d'hiver noir", 98.98, new ProductCategory("Vêtement"));
+        Product productClient2_2 = new Product("Deodorant", "Deodorant nartha", 58.98, new ProductCategory("Hygiène"));
+        Invoice invoice2 = new Invoice(today, invoiceDeadline, new Payment("CB"), client2, productClient2_1);
+        Invoice invoice3 = new Invoice(today, invoiceDeadline, new Payment("CB"), client2, productClient2_2);
 
-       productRepository.save(product1); // Enregistrer le produit
+        invoiceRepository.save(invoice2);
+        invoiceRepository.save(invoice3);
+        productRepository.save(productClient2_1);
+        productRepository.save(productClient2_2);
+
 
         return invoices;
     }

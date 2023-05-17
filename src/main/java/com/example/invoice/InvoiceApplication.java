@@ -31,6 +31,7 @@ public class InvoiceApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		userService.addUser();
 		invoiceService.addInvoice();
+		clientService.addClientWithProduct();
 
 	}
 }

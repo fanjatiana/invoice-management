@@ -14,9 +14,9 @@ public class Product {
 
     private double priceHT;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "invoice_id")
-    private Invoice invoice;
+    private Invoice invoice;*/
 
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -29,14 +29,6 @@ public class Product {
         this.productCategory = productCategory;
     }
     public Product() {
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
     }
 
     public long getId() {
