@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+  <title>Login</title>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h1><img src="" class="img-thumbnail w-25"
+                                                    alt="logo"></h1></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registration">Registration</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+</header>
+<main>
+  <div class="container d-flex justify-content-center align-items-center flex-column mt-4">
+    <div class="row col-4 mt-5">
+      <h2 class="text-center">Login</h2>
+    </div>
+    <div class="row col-4">
+      <form action="#" th:action="@{/login}" th:object="${form}" method="post">
+        <div class="mb-3 col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3 col-12">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3 col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="error" th:if="${error}">
+      <p>  Invalid email or password</p>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="container fixed-bottom mt-3 pt-3 bg-dark text-bg-dark">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>&copy; 2023 - Made by Fanja.P</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
