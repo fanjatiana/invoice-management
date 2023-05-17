@@ -25,7 +25,6 @@ public class ClientService {
         Product product1 = new Product("Jambon 4 tranches", "paquet de 4 tranches de jambon de la marque fleury michon", 6.18, new ProductCategory("Alimentaire"));
         Product product2 = new Product("Jambon 4 tranches", "paquet de 4 tranches de jambon de la marque fleury michon", 6.18, new ProductCategory("Alimentaire"));
 
-        // Sauvegarder les produits en base de données
         productRepository.save(product1);
         productRepository.save(product2);
 
