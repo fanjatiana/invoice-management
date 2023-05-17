@@ -7,17 +7,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
-    <title>Title</title>
+    <title>Mes Clients</title>
 </head>
 <body>
-<header>
 
+<header>
     <div class="container container-fluid ">
         <div class="row col-12">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="home"><h1><img src="/images/invoice.png" class="img-thumbnail w-25"
-                                                              alt="logo"></h1></a>
+                                                                 alt="logo"></h1></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -59,11 +59,17 @@
                         <ul class="navbar-nav mb-2 mb-lg-0 float-end">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span th:text="${#authentication.name}"></span>
                                     <ul class="dropdown-menu" aria-labelledby="navBarDropDown">
                                         <li>
                                             <a class="dropdown-item" href="profile">Profile</a>
                                         </li>
-                                        <li><a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a></li>
+                                        <li>
+                                            <form th:action="@{/auth/logout}" method="post">
+                                                <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
                                     </ul>
                                 </a>
                             </li>
@@ -76,44 +82,43 @@
 </header>
 
 <main>
-    <div class="container d-flex justify-content-center align-items-center flex-column mt-5">
-        <div class="row mb-3">
-            <h2>Ajouter un nouveau produit</h2>
+    <div class="container container-fluid mt-5">
+        <div class="row col-12 mt-5 mb-4">
+            <h2 class="text-center">Mes Clients</h2>
         </div>
-        <div class="row col-4">
-    <form action="#" th:action="@{/add-invoice}"  th:object="${invoices}" th:method="post">
-        <div class="mb-3 col-12 mt-2">
-            <label for="invoiceCreationDate">Date de création</label>
-            <input type="date" class="form-control" id="invoiceCreationDate" name="invoiceCreationDate"
-                   value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
+        <div class="row col-12 mb-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Numéro client</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Numéro de téléphone</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Code postale</th>
+                    <th scope="col">Nom de l'entreprise</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="c:${clients}">
+                    <td th:text="${c.getId()}"></td>
+                    <td th:text="${c.getFirstname()}"></td>
+                    <td th:text="${c.getLastname()}"></td>
+                    <td th:text="${c.getPhoneNumber()}"></td>
+                    <td th:text="${c.getAddress().streetName}"></td>
+                    <td th:text="${c.getAddress().city}"></td>
+                    <td th:text="${c.getAddress().zipCode}"></td>
+                    <td th:text="${c.getCompagnyName()}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="mb-3 col-12 mt-2">
-            <label for="typeOfPayment">Mode de paiement :</label>
-            <select class="form-control" id="typeOfPayment" name="typeOfPayment" required>
-                <option value="Carte de crédit">Espèce</option>
-                <option value="Chèque">Chèque</option>
-                <option value="Carte de crédit">Carte de crédit</option>
-                <option value="Virement bancaire">Virement bancaire</option>
-            </select>
-        </div>
-        <div class="mb-3 col-12 mt-2">
-            <label for="compagnyName">Client</label>
-            <select class="form-control" id="compagnyName" name="compagnyName" required>
-                <option th:each="c : ${clients}" th:value="${c.getCompagnyName}" th:text="${c.getCompagnyName()}"></option>
-            </select>
-        </div>
-        <div class="mb-3 col-12 mt-2">
-            <label for="productName">Produit :</label>
-            <select class="form-control" id="productName" name="productName" required>
-                <option th:each="p : ${products}" th:value="${p.getProductName()}" th:text="${p.getProductName()}"></option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Ajouter la facture</button>
-    </form>
+        <div class="row col-2 mx-auto">
+            <a href="add-client" class="btn btn-primary btn-sm" tabindex="-1" role="button">Ajouter un client</a>
         </div>
     </div>
 </main>
-
 <footer>
     <div class="container fixed-bottom mt-3 pt-3 w-100">
         <div class="row">
@@ -125,5 +130,3 @@
 </footer>
 </body>
 </html>
-
-

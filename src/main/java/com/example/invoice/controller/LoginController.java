@@ -19,9 +19,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public String displayLoginForm() {
-        userService.addUser();
+
         return "login";
     }
 
@@ -32,7 +32,7 @@ public class LoginController {
         Optional<User> optionalUser = userService.findUserByEmailAndPassword(email, password);
         if (optionalUser.isPresent()) {
             session.setAttribute("user", optionalUser);
-            return "redirect:/home";
+            return "redirect:/auth/home";
         } else {
             model.addAttribute("error", true);
             return "login";

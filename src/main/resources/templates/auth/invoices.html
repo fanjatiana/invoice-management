@@ -17,7 +17,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="home"><h1><img src="/images/invoice.png" class="img-thumbnail w-25"
-                                                    alt="logo"></h1></a>
+                                                       alt="logo"></h1></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                   aria-expanded="false" aria-label="Toggle navigation">
@@ -59,11 +59,17 @@
             <ul class="navbar-nav mb-2 mb-lg-0 float-end">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span th:text="${#authentication.name}"></span>
                   <ul class="dropdown-menu" aria-labelledby="navBarDropDown">
                     <li>
                       <a class="dropdown-item" href="profile">Profile</a>
                     </li>
-                    <li><a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a></li>
+                    <li>
+                      <form th:action="@{/auth/logout}" method="post">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                        <button type="submit" class="dropdown-item">Logout</button>
+                      </form>
+                    </li>
                   </ul>
                 </a>
               </li>

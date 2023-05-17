@@ -29,7 +29,8 @@
                                 <a class="nav-link active" aria-current="page" href="#">Page d'accuil</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Clients
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,32 +39,43 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Produits
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="products">Consulter la liste des produits</a></li>
+                                    <li><a class="dropdown-item" href="products">Consulter la liste des produits</a>
+                                    </li>
                                     <li><a class="dropdown-item" href="add-product">Ajouter un produit</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Factures
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="invoices">Consulter la liste des factures</a></li>
+                                    <li><a class="dropdown-item" href="invoices">Consulter la liste des factures</a>
+                                    </li>
                                     <li><a class="dropdown-item" href="add-invoice">Ajouter une facture</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0 float-end">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span th:text="${#authentication.name}"></span>
                                     <ul class="dropdown-menu" aria-labelledby="navBarDropDown">
                                         <li>
-                                            <a class="dropdown-item" href="profile">Profile</a>
+                                            <a class="dropdown-item" href="auth/profile">Profile</a>
                                         </li>
-                                        <li><a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a></li>
+                                        <li>
+                                            <form th:action="@{/auth/logout}" method="post">
+                                                <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
                                     </ul>
                                 </a>
                             </li>
@@ -92,7 +104,8 @@
                 <div class="card-body">
                     <div class="d-flex flex-column">
                         <a href="clients" class="btn btn-primary btn-sm mt-2 mb-2" role="button">Consulter</a>
-                        <a href="add-client" class="btn btn-primary btn-sm mt-2 mb-2" role="button">Ajouter un client</a>
+                        <a href="add-client" class="btn btn-primary btn-sm mt-2 mb-2" role="button">Ajouter un
+                            client</a>
                     </div>
 
                 </div>
@@ -105,7 +118,8 @@
                 <div class="card-body ">
                     <div class="d-flex flex-column">
                         <a href="products" class="btn btn-primary btn-sm mt-2 mb-2" role="button">Consulter</a>
-                        <a href="add-product" class="btn btn-primary btn-sm mt-2 mb-2" role="button">Ajouter un produit</a>
+                        <a href="add-product" class="btn btn-primary btn-sm mt-2 mb-2" role="button">Ajouter un
+                            produit</a>
                     </div>
 
                 </div>

@@ -1,8 +1,6 @@
 package com.example.invoice.controller;
 
 import com.example.invoice.entity.*;
-import com.example.invoice.repository.ClientRepository;
-import com.example.invoice.repository.ProductRepository;
 import com.example.invoice.service.ClientService;
 import com.example.invoice.service.InvoiceService;
 import com.example.invoice.service.ProductService;
@@ -27,14 +25,14 @@ public class InvoiceController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/invoices")
+    @GetMapping("/auth/invoices")
     public String displayInvoicePage(Model model) {
         List<Invoice> invoiceList = invoiceService.findAllInvoicies();
         model.addAttribute("invoices", invoiceList);
-        return "invoices";
+        return "auth/invoices";
     }
 
-    @GetMapping("/add-invoice")
+    @GetMapping("/auth/add-invoice")
     public String displayInvoiceForm(Model model) {
         List<Invoice> invoiceList = invoiceService.findAllInvoicies();
         model.addAttribute("invoices", invoiceList);
@@ -45,10 +43,10 @@ public class InvoiceController {
         List<Product> productList = productService.findAllProducts();
         model.addAttribute("products", productList);
 
-        return "add-invoice";
+        return "auth/add-invoice";
     }
 
-    @PostMapping("/add-invoice")
+    @PostMapping("/auth/add-invoice")
     public String handleProductForm(@RequestParam String invoiceCreationDate,
                                     @RequestParam String typeOfPayment,
                                     @RequestParam String compagnyName,
@@ -58,6 +56,6 @@ public class InvoiceController {
         Product product = new Product(productName);
         Payment payment = new Payment(typeOfPayment);
         invoiceService.addInvoiceByForm(invoiceCreationDate, payment, client, product);
-        return "redirect:/invoices";
+        return "redirect:/auth/invoices";
     }
 }

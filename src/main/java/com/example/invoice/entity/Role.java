@@ -12,11 +12,9 @@ public class Role {
     private long id;
     private String roleName;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private List<User> users;
+    public Role(String roleName) {
 
-    public Role(String role) {
-        this.roleName = role;
+        this.roleName = roleName;
     }
 
     public Role() {
