@@ -1,10 +1,6 @@
 package com.example.invoice.entity;
-
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "invoice")
@@ -24,7 +20,6 @@ public class Invoice {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Product product;
-
 
 
     public Product getProduct() {
@@ -76,7 +71,6 @@ public class Invoice {
     public void setId(long id) {
         this.id = id;
     }
-
 
 
     public Payment getPayment() {

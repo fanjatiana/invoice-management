@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+
 @Controller
 public class ProductController {
-
     @Autowired
     private ProductService productService;
 
@@ -35,7 +35,7 @@ public class ProductController {
                                     @RequestParam String priceHt,
                                     @RequestParam String productCategory) {
 
-      productService.addProductByForm(productName,productDescription,priceHt,new ProductCategory(productCategory));
+        productService.addProductByForm(productName, productDescription, priceHt, new ProductCategory(productCategory));
         return "redirect:/auth/products";
     }
 }

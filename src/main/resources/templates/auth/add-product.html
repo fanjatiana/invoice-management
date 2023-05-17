@@ -10,7 +10,6 @@
     <title>Ajouter un produit</title>
 </head>
 <body>
-
 <header>
     <div class="container container-fluid ">
         <div class="row col-12">
@@ -26,10 +25,11 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="home">Page d'accuil</a>
+                                <a class="nav-link active" aria-current="page" href="home">Page d'accueil</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Clients
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,27 +38,32 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Produits
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="products">Consulter la liste des produits</a></li>
+                                    <li><a class="dropdown-item" href="products">Consulter la liste des produits</a>
+                                    </li>
                                     <li><a class="dropdown-item" href="add-product">Ajouter un produit</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Factures
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="invoices">Consulter la liste des factures</a></li>
+                                    <li><a class="dropdown-item" href="invoices">Consulter la liste des factures</a>
+                                    </li>
                                     <li><a class="dropdown-item" href="add-invoice">Ajouter une facture</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0 float-end">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     <span th:text="${#authentication.name}"></span>
                                     <ul class="dropdown-menu" aria-labelledby="navBarDropDown">
                                         <li>
@@ -80,7 +85,6 @@
         </div>
     </div>
 </header>
-
 <main>
     <div class="container d-flex justify-content-center align-items-center flex-column mt-4">
         <div class="row">
@@ -90,12 +94,12 @@
             <form action="#" th:action="@{/auth/add-product}" th:object="${product}" th:method="post">
                 <div class="mb-3 col-12 mt-2">
                     <label for="productName" class="form-label">Nom du produit</label>
-                    <input type="text" class="form-control" id="productName" name="productName">
+                    <input type="text" class="form-control" id="productName" name="productName"required>
                 </div>
                 <div class="mb-3 col-12 mt-2">
-                    <label for="productDescription" class="form-label fw-bold">Description</label>
+                    <label for="productDescription" class="form-label">Description</label>
                     <textarea class="form-control" id="productDescription" name="productDescription"
-                              rows="3"></textarea>
+                              rows="3" required></textarea>
                 </div>
 
                 <div class="mb-3 col-12 mt-2">
@@ -105,7 +109,7 @@
                 <div class="mb-3 col-12 mt-2">
                     <label for="productCategory">Cathégorie du produit</label>
                     <select class="form-select" aria-label="Default select example" name="productCategory"
-                            id="productCategory">
+                            id="productCategory" required>
                         <option value="Alimentaire" selected>Alimentaire</option>
                         <option value="Informatique">Informatique</option>
                         <option value="Vêtements">Vêtements</option>

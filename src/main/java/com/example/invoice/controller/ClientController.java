@@ -1,5 +1,4 @@
 package com.example.invoice.controller;
-
 import com.example.invoice.entity.Address;
 import com.example.invoice.entity.Client;
 import com.example.invoice.service.ClientService;
@@ -9,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 
 @Controller
@@ -31,13 +29,13 @@ public class ClientController {
 
     @PostMapping("/auth/add-client")
     public String handleClientForm(@RequestParam String firstname,
-                                    @RequestParam String lastname,
-                                    @RequestParam String phoneNumber,
-                                    @RequestParam String address,
-                                    @RequestParam String city,
-                                    @RequestParam String zipCode,
-                                    @RequestParam String compagnyName) {
-        clientService.addClientByForm(firstname,lastname,phoneNumber,compagnyName,new Address(address,city,zipCode));
+                                   @RequestParam String lastname,
+                                   @RequestParam String phoneNumber,
+                                   @RequestParam String address,
+                                   @RequestParam String city,
+                                   @RequestParam String zipCode,
+                                   @RequestParam String compagnyName) {
+        clientService.addClientByForm(firstname, lastname, phoneNumber, compagnyName, new Address(address, city, zipCode));
         return "redirect:/auth/clients";
     }
 }

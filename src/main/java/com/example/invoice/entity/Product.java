@@ -10,18 +10,14 @@ public class Product {
     private long id;
     private String productName;
 
-    private  String productDescription;
+    private String productDescription;
 
     private double priceHT;
-
-   /* @ManyToOne
-    @JoinColumn(name = "invoice_id")
-    private Invoice invoice;*/
-
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "productCategory_id")
     private ProductCategory productCategory;
+
     public Product(String productName, String productDescription, double priceHT, ProductCategory productCategory) {
         this.productName = productName;
         this.productDescription = productDescription;

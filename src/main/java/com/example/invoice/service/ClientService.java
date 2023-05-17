@@ -1,10 +1,8 @@
 package com.example.invoice.service;
-
 import com.example.invoice.entity.*;
 import com.example.invoice.repository.ClientRepository;
 import com.example.invoice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.AbstractDriverBasedDataSource;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ public class ClientService {
     private ClientRepository clientRepository;
 
     @Autowired
-    private ProductRepository productRepository ;
+    private ProductRepository productRepository;
 
     public List<Client> addClientWithProduct() {
         List<Client> clients = new ArrayList<>();
@@ -39,14 +37,13 @@ public class ClientService {
         return clients;
     }
 
-    public Client addClientByForm(String firstname, String lastname, String phoneNumber, String compagnyName, Address address){
-        Client newClient = new Client(firstname,lastname,phoneNumber,compagnyName,new Address(address.getStreetName(),address.getCity(),address.getZipCode()));
+    public Client addClientByForm(String firstname, String lastname, String phoneNumber, String compagnyName, Address address) {
+        Client newClient = new Client(firstname, lastname, phoneNumber, compagnyName, new Address(address.getStreetName(), address.getCity(), address.getZipCode()));
         clientRepository.save(newClient);
         return newClient;
     }
 
-    public List<Client> findAllClients(){
+    public List<Client> findAllClients() {
         return clientRepository.findAll();
     }
-
 }

@@ -14,10 +14,8 @@ public class Payment {
         this.typeOfPayment = typeOfPayment;
     }
 
-
     public Payment(String typeOfPayment, Invoice invoice) {
         this.typeOfPayment = typeOfPayment;
-
     }
 
     public Payment() {

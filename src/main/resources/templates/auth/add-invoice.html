@@ -7,11 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
-    <title>Title</title>
+    <title>Ajouter une nouvelle facture</title>
 </head>
 <body>
 <header>
-
     <div class="container container-fluid ">
         <div class="row col-12">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,10 +25,11 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="home">Page d'accuil</a>
+                                <a class="nav-link active" aria-current="page" href="home">Page d'accueil</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Clients
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,27 +38,32 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Produits
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="products">Consulter la liste des produits</a></li>
+                                    <li><a class="dropdown-item" href="products">Consulter la liste des produits</a>
+                                    </li>
                                     <li><a class="dropdown-item" href="add-product">Ajouter un produit</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Factures
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="invoices">Consulter la liste des factures</a></li>
+                                    <li><a class="dropdown-item" href="invoices">Consulter la liste des factures</a>
+                                    </li>
                                     <li><a class="dropdown-item" href="add-invoice">Ajouter une facture</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0 float-end">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navBarDropDown"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     <span th:text="${#authentication.name}"></span>
                                     <ul class="dropdown-menu" aria-labelledby="navBarDropDown">
                                         <li>
@@ -80,46 +85,46 @@
         </div>
     </div>
 </header>
-
 <main>
     <div class="container d-flex justify-content-center align-items-center flex-column mt-5">
         <div class="row mb-3">
-            <h2>Ajouter un nouveau produit</h2>
+            <h2>Ajouter une nouvelle facture</h2>
         </div>
         <div class="row col-4">
-    <form action="#" th:action="@{/auth/add-invoice}"  th:object="${invoices}" th:method="post">
-        <div class="mb-3 col-12 mt-2">
-            <label for="invoiceCreationDate">Date de création</label>
-            <input type="date" class="form-control" id="invoiceCreationDate" name="invoiceCreationDate"
-                   value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
-        </div>
-        <div class="mb-3 col-12 mt-2">
-            <label for="typeOfPayment">Mode de paiement :</label>
-            <select class="form-control" id="typeOfPayment" name="typeOfPayment" required>
-                <option value="Carte de crédit">Espèce</option>
-                <option value="Chèque">Chèque</option>
-                <option value="Carte de crédit">Carte de crédit</option>
-                <option value="Virement bancaire">Virement bancaire</option>
-            </select>
-        </div>
-        <div class="mb-3 col-12 mt-2">
-            <label for="compagnyName">Client</label>
-            <select class="form-control" id="compagnyName" name="compagnyName" required>
-                <option th:each="c : ${clients}" th:value="${c.getCompagnyName}" th:text="${c.getCompagnyName()}"></option>
-            </select>
-        </div>
-        <div class="mb-3 col-12 mt-2">
-            <label for="productName">Produit :</label>
-            <select class="form-control" id="productName" name="productName" required>
-                <option th:each="p : ${products}" th:value="${p.getProductName()}" th:text="${p.getProductName()}"></option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Ajouter la facture</button>
-    </form>
+            <form action="#" th:action="@{/auth/add-invoice}" th:object="${invoices}" th:method="post">
+                <div class="mb-3 col-12 mt-2">
+                    <label for="invoiceCreationDate">Date de création</label>
+                    <input type="date" class="form-control" id="invoiceCreationDate" name="invoiceCreationDate"
+                           value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" required>
+                </div>
+                <div class="mb-3 col-12 mt-2">
+                    <label for="typeOfPayment">Mode de paiement :</label>
+                    <select class="form-control" id="typeOfPayment" name="typeOfPayment" required>
+                        <option value="Carte de crédit">Espèce</option>
+                        <option value="Chèque">Chèque</option>
+                        <option value="Carte de crédit">Carte de crédit</option>
+                        <option value="Virement bancaire">Virement bancaire</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-12 mt-2">
+                    <label for="compagnyName">Client</label>
+                    <select class="form-control" id="compagnyName" name="compagnyName" required>
+                        <option th:each="c : ${clients}" th:value="${c.getCompagnyName}"
+                                th:text="${c.getCompagnyName()}"></option>
+                    </select>
+                </div>
+                <div class="mb-3 col-12 mt-2">
+                    <label for="productName">Produit :</label>
+                    <select class="form-control" id="productName" name="productName" required>
+                        <option th:each="p : ${products}" th:value="${p.getProductName()}"
+                                th:text="${p.getProductName()}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter la facture</button>
+            </form>
         </div>
     </div>
 </main>
-
 <footer>
     <div class="container fixed-bottom mt-3 pt-3 w-100">
         <div class="row">

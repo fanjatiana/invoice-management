@@ -48,7 +48,6 @@ public class Client {
     public Client() {
     }
 
-
     public Client(String firstname, String lastname, String phoneNumber, String compagnyName, Address address) {
         this.firstname = firstname;
         this.lastname = lastname;

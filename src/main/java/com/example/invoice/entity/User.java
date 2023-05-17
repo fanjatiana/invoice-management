@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
@@ -21,10 +20,9 @@ public class User implements UserDetails {
     private String password;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "role_id")
-   private Role role;
+    private Role role;
 
     public User(String firstname, String lastname, String email, String password, Role role) {
-
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

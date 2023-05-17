@@ -1,22 +1,16 @@
 package com.example.invoice.service;
-
 import com.example.invoice.entity.*;
 import com.example.invoice.repository.ClientRepository;
 import com.example.invoice.repository.InvoiceRepository;
 import com.example.invoice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class InvoiceService {
-
-
     @Autowired
     private InvoiceRepository invoiceRepository;
 
@@ -37,7 +31,6 @@ public class InvoiceService {
         invoiceRepository.save(invoice1);
         productRepository.save(product1);
 
-
         Product productClient2_1 = new Product("manteau", "Manteau d'hiver noir", 98.98, new ProductCategory("Vêtement"));
         Product productClient2_2 = new Product("Deodorant", "Deodorant nartha", 58.98, new ProductCategory("Hygiène"));
         Invoice invoice2 = new Invoice(today, invoiceDeadline, new Payment("CB"), client2, productClient2_1);
@@ -48,11 +41,10 @@ public class InvoiceService {
         productRepository.save(productClient2_1);
         productRepository.save(productClient2_2);
 
-
         return invoices;
     }
 
-    public Invoice addInvoiceByForm(String today,  Payment typeOfPayment, Client clientCompagnyName, Product clientProductName) {
+    public Invoice addInvoiceByForm(String today, Payment typeOfPayment, Client clientCompagnyName, Product clientProductName) {
         LocalDate localDate = LocalDate.parse(today);
         LocalDate localDateDeadline = localDate.plusMonths(1);
 

@@ -18,21 +18,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Autowired
-    private UserDetailsService userDetailsS;
     @Bean
     UserDetailsService customUserDetailsService() {
         return new UserDetailsServiceImpl();
     }
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsS).passwordEncoder(passwordEncoder());
-    }
 
-
-
-
-
-        @Bean // demande à spring d utiliser les methodes : customUserDetailsService, passwordEncoder
+    @Bean
     AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
@@ -40,12 +31,12 @@ public class SecurityConfig {
         return provider;
     }
 
-    @Bean // filtre
+    @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers("/css/**","/js/**", "/images/**").permitAll()
+                            .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                             .requestMatchers("/auth/**").authenticated();
                 }).formLogin(form -> {
                     form
